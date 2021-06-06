@@ -1,6 +1,3 @@
-import sys
-
-
 class Usuario:
     def __init__(self, nome):
         self.nome = nome
@@ -24,21 +21,23 @@ class Leilao:
     def __init__(self, descricao):
         self.descricao = descricao
         self.__lances = []  # atributo privador '__'
+        self.maior = 0
 
     @property
     def lances(self):
         return self.__lances
 
+    def fazer_lance(self, lance):
+        '''
+        qual é o maior e o menor lance do que foidado
+        '''
 
-class Avaliacao:
-    def __init__(self):
-        self.maior = sys.float_info.min
-        self.menor = sys.float_info.max
+        self.lances.append(lance)
+        if lance.valor > self.maior:
+            self.maior = lance.valor
 
-    def avalia(self, leilao: Leilao):
-        for i in leilao.lances:
-            if i.valor > self.maior:
-                self.maior = i.valor
-
-            elif i.valor < self.menor:
-                self.meior = i.valor
+        try:
+            if self.menor > lance.valor:
+                self.menor = lance.valor
+        except Exception:
+            self.menor = lance.valor
