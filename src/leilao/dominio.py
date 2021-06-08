@@ -1,6 +1,4 @@
 import sys
-
-
 class Usuario:
     def __init__(self, nome):
         self.nome = nome
@@ -40,5 +38,5 @@ class Avaliacao:
             if i.valor > self.maior:
                 self.maior = i.valor
 
-            elif i.valor < self.menor:
-                self.meior = i.valor
+            if i.valor < self.menor:
+                self.menor = i.valor
